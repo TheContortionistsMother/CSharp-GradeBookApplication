@@ -133,7 +133,7 @@ namespace GradeBook.GradeBooks
             var standardPoints = 0d;
             var honorPoints = 0d;
             var dualEnrolledPoints = 0d;
-
+           
             foreach (var student in Students)
             {
                 student.LetterGrade = GetLetterGrade(student.AverageGrade);
