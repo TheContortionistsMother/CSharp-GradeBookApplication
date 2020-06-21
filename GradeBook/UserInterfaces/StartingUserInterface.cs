@@ -6,6 +6,8 @@ namespace GradeBook.UserInterfaces
     public static class StartingUserInterface
     {
         public static bool Quit = false;
+        private static BaseGradeBook gradeBook;
+
         public static void CommandLoop()
         {
             while (!Quit)
@@ -40,23 +42,22 @@ namespace GradeBook.UserInterfaces
                 return;
             }
             var name = parts[1];
-             // BaseGradeBook gradeBook = new BaseGradeBook(name);
            
             var type = parts[2];
-            if(type == "standard")
+            if (type == "standard")
             {
-                var gradeBook = new StandardGradeBook(name);
+                gradeBook = new StandardGradeBook(name);
             }
             else if(type == "ranked")
             {
-                var gradeBook = new RankedGradeBook(name);
+                gradeBook = new RankedGradeBook(name);
             }
             else
             {
                 Console.WriteLine($"{parts[2]} is not a supported type of gradebook, please try again");
                 return;
             }
-
+             
             Console.WriteLine("Created gradebook {0}.", name);
             GradeBookUserInterface.CommandLoop(gradeBook);
         }
