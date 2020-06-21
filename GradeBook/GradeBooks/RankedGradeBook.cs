@@ -25,26 +25,25 @@ namespace GradeBook.GradeBooks
                 allGrades.Add(student.AverageGrade);
             }
             allGrades = allGrades.OrderByDescending(x=>x).ToList();
-            if (averageGrade >= allGrades[twentyPerCentStudents])
+            if (averageGrade >= allGrades[twentyPerCentStudents - 1])
             {
                 return 'A';
             }
-            var fortyPerCentStudents = twentyPerCentStudents * 2;
-            if (averageGrade >= allGrades[fortyPerCentStudents] 
-                && averageGrade < allGrades[twentyPerCentStudents])
+            var fortyPerCentStudents = twentyPerCentStudents + twentyPerCentStudents - 1;
+            if (averageGrade >= allGrades[fortyPerCentStudents] )
             {
                 return 'B';
             }
             var sixtyPerCentStudents = twentyPerCentStudents * 3;
-            if (averageGrade >= allGrades[sixtyPerCentStudents] && averageGrade < allGrades[fortyPerCentStudents])
+            if (averageGrade >= allGrades[sixtyPerCentStudents - 1])
             {
                 return 'C';
             }
-        //    var eightyPerCentStudents = twentyPerCentStudents * 4;
-        //    if (averageGrade >= allGrades[eightyPerCentStudents] && averageGrade < allGrades[sixtyPerCentStudents])
-        //    {
-         //       return 'D';
-         //   }
+            var eightyPerCentStudents = twentyPerCentStudents * 4;
+            if (averageGrade >= allGrades[eightyPerCentStudents - 1])
+            {
+                return 'D';
+            }
 
             return 'F';
         }
